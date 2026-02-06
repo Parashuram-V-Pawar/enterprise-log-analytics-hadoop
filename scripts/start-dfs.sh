@@ -1,11 +1,11 @@
 #!/bin/bash
 
 echo "Starting Hadoop services..."
-# 12. START HADOOP SERVICES
+# 1. START HADOOP SERVICES
 start-dfs.sh
 start-yarn.sh
 
-# 13. VERIFY
+# 2. VERIFY
 echo "Running jps..."
 jps
 
