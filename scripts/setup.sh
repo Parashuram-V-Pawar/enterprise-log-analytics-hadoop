@@ -49,7 +49,6 @@ if [ -z "$HADOOP_HOME" ]; then
 else
     echo "HADOOP_HOME already set"
 fi
-
 source ~/.bashrc
 
 # 5. CONFIGURE hadoop-env.sh
