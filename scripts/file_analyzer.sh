@@ -38,17 +38,22 @@ hdfs dfs -ls -h $S_INPUT_DIR
 echo "Running HDFS FSCK (block analysis)..."
 hdfs fsck $S_INPUT_DIR/logfiles.log -files -blocks
 
+# Number of blocks created
+echo "Number of blocks created are: "
+hdfs fsck $S_INPUT_DIR -files -blocks | grep "Total blocks"
+
 echo "Small log file execution and Analysis completed"
 
-
 # 1. Explain why the observed number of blocks is created
-# Ans: The file is split into blocks because its size exceeds the configured HDFS block size of 128 MB, 
+# Ans: The file is split into blocks because its size exceeds the default configured HDFS block size of 128 MB, 
 # resulting in one full block and one partially filled block.
 
 # 2. Discuss inefficiencies related to small files in HDFS
 # Ans: Small files in HDFS cause high NameNode metadata overhead, poor storage utilization, 
 # and inefficient MapReduce processing.
 
+
+# =============================================================================================================
 : '
 Task 3: Large Log File Scalability Test
 The system starts aggregating logs from multiple services, resulting in a large log file (1 GB or more).
@@ -89,4 +94,19 @@ hdfs dfs -ls -h $L_INPUT_DIR
 echo "Running HDFS FSCK (block analysis)..."
 hdfs fsck $L_INPUT_DIR/access.log -files -blocks
 
+# Number of blocks created
+echo "Number of blocks created are: "
+hdfs fsck $L_INPUT_DIR -files -blocks | grep "Total blocks"
+
 echo "Large log file execution and Analysis completed"
+
+
+# how block size impacts parallelism, storage, and fault tolerance
+# Parallelism: Larger block size creates fewer blocks which indeed reduces the mapper tasks and lower parallel processing,
+#   Where as smaller block size creates more blocks which increases mapper tasks and allow higher parallel processing. 
+
+# Storage: Larger blocks reduce NameNode metadata overhead and improve storage efficiency, 
+#   whereas smaller blocks increase metadata load and waste space due to many partially filled blocks.
+
+# Fault Tolerance: Blocks are the unit of replication in HDFS, smaller blocks limit the impact of failures to smaller data portions, 
+#   while larger blocks increase recovery time because more data must be re-replicated.
