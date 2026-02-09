@@ -14,8 +14,8 @@ Analysis:
 '
 
 
-INPUT_DIR=/large-log-file-analytics/input
-OUTPUT_DIR=/large-log-file-analytics/output
+INPUT_DIR=/small-log-file-analytics/input
+OUTPUT_DIR=/small-log-file-analytics/output
 
 
 # ---- CLEAN OLD OUTPUT ----

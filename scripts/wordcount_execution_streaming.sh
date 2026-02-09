@@ -1,12 +1,24 @@
  #!/bin/bash
 
+: '
+Phase 4: Custom MapReduce Implementation Using Python
+Task 5: Python WordCount Using Hadoop Streaming
+The engineering team prefers Python for rapid development and flexibility.
+Actions:
+1. Implement a WordCount MapReduce job using Python
+2. Ensure compatibility with Hadoop Streaming
+3. Execute the job on the same HDFS input data
+Comparison:
+1. Compare the Python implementation with the built-in WordCount job
+2. Discuss differences in performance, flexibility, and execution overhead
+'
 # HDFS DIRECTORIES
-INPUT_DIR=/large-log-file-analytics/input
-OUTPUT_DIR=/large-log-file-analytics/output-streaming
+INPUT_DIR=/small-log-file-analytics/input
+OUTPUT_DIR=/small-log-file-analytics/output-streaming
 
 # LOCAL SCRIPT PATHS
-MAPPER=large-log-file-analyzer-mapper.py
-REDUCER=large-log-file-analyzer-reducer.py
+MAPPER=./streaming/log-file-analyzer-mapper.py
+REDUCER=./streaming/log-file-analyzer-reducer.py
 
 # CLEAN OLD OUTPUT
 echo "Removing old HDFS output directory..."
