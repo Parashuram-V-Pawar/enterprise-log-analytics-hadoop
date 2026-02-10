@@ -12,11 +12,13 @@ This project builds a local Hadoop-based system to ingest, store, and analyze gr
 8. Hadoop configuration and performance tuning.
 
 ## Tech Stack
+```
 Operatting System : Linux/Mac OS/ WSL for windows.
 Platform : Apache Hadoop.
 Storage : HDFS
 Environment : Java JDK 8 or 11.
 Programming Language : Python (for Streaming).
+```
 
 ## Project Structure
 ```
