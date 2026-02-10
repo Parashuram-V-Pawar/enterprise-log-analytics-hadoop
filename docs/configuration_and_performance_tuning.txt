@@ -1,0 +1,34 @@
+Phase 7: Hadoop Configuration and Performance Tuning
+
+As log volume increases, the Hadoop cluster begins to show performance degradation in terms of job execution time, resource contention, and inefficient utilization of cluster resources.
+
+1. Study Hadoop configuration files:
+The following core configuration files are analyzed:
+1. core-site.xml – This file contains all the configurations for Hadoop I/O.
+2. hdfs-site.xml – This file contains all the configurations for HDFS storage and block management.
+3. mapred-site.xml – This file contains all the configurations for MapReduce execution settings.
+4. yarn-site.xml – This file contains all the configurations for YARN resource allocation and scheduling.
+
+2. Identify critical properties related to:
+    1. HDFS block management:
+    * dfs.blocksize : This is a property to configuring blocksize, by default it is configured to 128mb
+        If we increase block size lesser mappers are created which reduces the metadata overhead in NameNode.
+    * dfs.replication : This is a property to configure replications of each blocks.
+        default setting is 3 and we can reduce this setting during testing to improve performance and lower storage consumption.
+    
+    2. MapReduce Execution Tuning:
+    * mapreduce.map.memory.mb : This property is used to allocate the memory to each mapper.
+        It prevents the mapper  failures due to insufficient memory.
+    * mapreduce.reduce.memory.mb : This property is used to configure memory allocated to easch reducer task.
+        It Prevents reducer crashes during shuffle and aggregation and improves reduce-phase performance.
+    * mapreduce.job.reduces : This property is used to configure number of reducer task for a job.
+        Optimal reducers balance speed and resource usage and More reducers provide better parallelism, too many reducers create overhead.
+
+    3. YARN Resource Allocation Tuning:
+    * yarn.nodemanager.resource.memory-mb : This tells YARN how much RAM a single machine is allowed to give to containers.
+        It ensures YARN doesn't overcommit memory.
+    * yarn.scheduler.maximum-allocation-mb : It configures maximum memory a container can request.
+        It allows larger jobs to run without failure and prevents resource starvation.
+    * yarn.scheduler.minimum-allocation-mb : It configures minimum memory allocation unit.
+        It helps reduce resource fragmentation. 
+
