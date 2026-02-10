@@ -1,0 +1,51 @@
+Phase 6: Hadoop Architecture Evolution Study
+
+Hadoop is an open source framework overseen by Apache Software Foundation which is written in Java for storing and processing of huge datasets with the cluster of commodity hardware. There are mainly two problems with the big data. First one is to store such a huge amount of data and the second one is to process that stored data. The traditional approach like RDBMS is not sufficient due to the heterogeneity of the data. So Hadoop comes as the solution to the problem of big data i.e. storing and processing the big data with some extra capabilities. There are mainly two components of Hadoop which are Hadoop Distributed File System (HDFS) and Yet Another Resource Negotiator(YARN).
+
+Hadoop was started with Doug Cutting and Mike Cafarella in the year 2002 when they both started to work on Apache Nutch project. In January of 2008, Yahoo released Hadoop as an open source project to ASF(Apache Software Foundation). 
+
+1. Hadoop 1.x Architecture:
+Hadoop 1, often referred to as Hadoop 1.x or MapReduce 1, It was mainly built to store the large files and to process them using MapReduce. 
+The architecture of Hadoop 1.x consists of two main components:
+1. JobTrackers - JobTracker acted as a single master that handled job scheduling, resource management, and task monitoring.
+2. TaskTrackers - TaskTrackers ran on worker nodes and executed map and reduce tasks.
+HDFS relied on a single NameNode, creating a single point of failure.
+
+Limititations of Hadoop 1.x are:
+1. Scalabitlity - It was only limited to certain number of nodes and it was not able to scale up to the large clusters.
+2. Resource utilization - It was not efficient in utilizing the resources of the cluster as it was designed to run only MapReduce jobs.
+3. Single point of failure - The NameNode in the HDFS architecture was a single point of failure, which means if the NameNode fails, the entire cluster becomes unavailable.
+
+
+2. Hadoop 2.x Architecture: 
+Hadoop 1.x had 2 big problems those are:
+1. One master doing everything which used to slow down the process and
+2. Only MapReduce jobs which didn't have flexibility.
+Hadoop 2.x fixed the above problems by introducing the YARN (Yet Another Resource Negotiator).
+YARN is like a manager for the whole cluster that:
+* Decides who gets CPU and memory.
+* Lets different types of jobs run together.
+* Stops one job from stealing all resources.
+Main parts of YARN:
+1. Resource manager - It runs once in cluster and manages resources and decides which process gets how much resources, and it doesn't run tasks.
+2. Application master - Each job gets it's own Application Master and Requests for the resources from Resource manager and communicates with NodeManager and also handles Task failures. 
+3. NodeManager - It Runs on every machine to start and stop containers and monitores CPU and memory usage and also reports health to Resource Manager.
+4. Containers - This is where the tasks run and containers prevent misuse of resources.
+
+Hadoop 2.x architecture support for multiple frameworks unlike Hadoop 1.x.
+We can run MapReduce, Hive, Spark, Tez all on same cluster.
+Hadoop 2.x provides high availability of data even when one nodes fails.
+Two NameNodes:
+* Active
+* Standby
+If Active fails, Standby takes over
+No data loss, minimal downtime 
+
+3. Hadoop 3.x Architecture:
+Hadoop 3.x did not change the core design of Hadoop 2.x. Instead, it improved efficiency, performance, and enterprise readiness.
+Features:
+1. Erasure Coding — Smarter storage
+2. Performance Optimizations — Faster processing
+3. Containerization Support — Cloud-friendly Hadoop
+4. Compatibility & Ecosystem Support
+Hadoop 3.x improves storage efficiency, performance, and cloud compatibility while keeping Hadoop flexible and scalable.

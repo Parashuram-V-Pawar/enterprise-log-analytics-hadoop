@@ -16,3 +16,4 @@ for line in sys.stdin:
 
     if status_code >= 400:
         print(f"{status_code}\t{endpoint}")
+        print(f"{endpoint}\t{status_code}")
