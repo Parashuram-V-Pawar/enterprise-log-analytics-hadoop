@@ -64,15 +64,13 @@ large_log_file : https://www.kaggle.com/datasets/eliasdabbas/web-server-access-l
 Then move this files to desired location and change the "*LOCAL_LOG_FILE" path in file_analyzer.sh according to your dataset path.
 
 Now execute below commands in order:
-1. ./scripts/setup.sh
-2. ./scripts/start-hadoop.sh
-3. ./scripts/stop-hadoop.sh
-4. ./scripts/wordcount_execution_inbuilt.sh
-5. ./scripts/wordcount_execution_streaming.sh
-6. ./scripts/error_log_analysis.sh
-
+1. ./scripts/setup.sh (install hadoop and set environment)
+2. ./scripts/start-hadoop.sh (start hadoop services)
+3. ./scripts/wordcount_execution_inbuilt.sh
+4. ./scripts/wordcount_execution_streaming.sh
+5. ./scripts/error_log_analysis.sh
+6. ./scripts/stop-hadoop.sh (stop hadoop services)
 ```
-
 
 ## Author
 ```
