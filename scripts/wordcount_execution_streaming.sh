@@ -17,8 +17,8 @@ INPUT_DIR=/small-log-file-analytics/input
 OUTPUT_DIR=/small-log-file-analytics/output-streaming
 
 # LOCAL SCRIPT PATHS
-MAPPER=./streaming/log-file-analyzer-mapper.py
-REDUCER=./streaming/log-file-analyzer-reducer.py
+MAPPER=streaming/log_file_analyzer_mapper.py
+REDUCER=streaming/log_file_analyzer_reducer.py
 
 # CLEAN OLD OUTPUT
 echo "Removing old HDFS output directory..."
@@ -29,14 +29,14 @@ echo "Running Hadoop Streaming job..."
 
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
 -files $MAPPER,$REDUCER \
--mapper "python3 $MAPPER" \
--reducer "python3 $REDUCER" \
+-mapper "python3 log_file_analyzer_mapper.py" \
+-reducer "python3 log_file_analyzer_reducer.py" \
 -input $INPUT_DIR \
 -output $OUTPUT_DIR
 
 # VERIFY OUTPUT
 echo "Streaming job output (first 20 lines):"
-hdfs dfs -cat $OUTPUT_DIR/part-00000 | head -20
+hdfs dfs -cat $OUTPUT_DIR/part-00000
 
 echo "Hadoop Streaming job completed successfully."
 

@@ -15,5 +15,5 @@ for line in sys.stdin:
     endpoint = match.group(4)
 
     if status_code >= 400:
-        print(f"{status_code}\t{endpoint}")
-        print(f"{endpoint}\t{status_code}")
+        print(f"{status_code}\t1")
+        print(f"{endpoint}\t1")
