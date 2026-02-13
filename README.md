@@ -66,10 +66,11 @@ Then move this files to desired location and change the "*LOCAL_LOG_FILE" path i
 Now execute below commands in order:
 1. ./scripts/setup.sh (install hadoop and set environment)
 2. ./scripts/start-hadoop.sh (start hadoop services)
-3. ./scripts/wordcount_execution_inbuilt.sh
-4. ./scripts/wordcount_execution_streaming.sh
-5. ./scripts/error_log_analysis.sh
-6. ./scripts/stop-hadoop.sh (stop hadoop services)
+3. ./scripts/file_analyzer.sh
+4. ./scripts/wordcount_execution_inbuilt.sh
+5. ./scripts/wordcount_execution_streaming.sh
+6. ./scripts/error_log_analysis.sh
+7. ./scripts/stop-hadoop.sh (stop hadoop services)
 ```
 
 ## Author
